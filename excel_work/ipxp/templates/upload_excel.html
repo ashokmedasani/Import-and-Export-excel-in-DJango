@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Upload Excel Files</title>
+  </head>
+  <body>
+    <h2>Upload Excel Files</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Upload</button>
+    </form>
+    <h3>Uploaded Files:</h3>
+    <ul>
+      {% for item in data %}
+      <li>{{ item.file.name }}</li>
+      <a href="{% url 'delete_excel' file_id=item.id %}">Delete</a>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

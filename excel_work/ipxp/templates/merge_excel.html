@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Merge Excel Files</title>
+  </head>
+  <body>
+    <h2>Merge Excel Files</h2>
+    <p>Click the button below to merge Excel files:</p>
+    <form method="post" action="{% url 'merge_excel' %}">
+      {% csrf_token %}
+      <button type="submit">Merge</button>
+    </form>
+  </body>
+</html>

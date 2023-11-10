@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Upload Individual Excel Files</title>
+  </head>
+  <body>
+    <h2>Upload Individual Excel Files</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Upload Individual Excel</button>
+    </form>
+    <h3>Uploaded Files:</h3>
+    {% comment %} <ul>
+      {% for item in data %}
+      <li>
+        {{ item.excel_file.name }}
+        <form method="post" action="{% url 'delete_individual_excel' %}">
+          {% csrf_token %} {{ delete_form.excel_file_id.as_hidden }}
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+      {% endfor %}
+    </ul> {% endcomment %}
+  </body>
+</html>
