@@ -11,7 +11,7 @@
       <button type="submit">Upload Individual Excel</button>
     </form>
     <h3>Uploaded Files:</h3>
-    {% comment %} <ul>
+    <ul>
       {% for item in data %}
       <li>
         {{ item.excel_file.name }}
@@ -21,6 +21,6 @@
         </form>
       </li>
       {% endfor %}
-    </ul> {% endcomment %}
+    </ul>
   </body>
 </html>

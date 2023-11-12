@@ -9,6 +9,17 @@ class person(models.Model):
 class ExcelData(models.Model):
     file = models.FileField(upload_to='uploads/')
 
+class File(models.Model):
+    name = models.CharField(max_length=255)
+    deleted = models.BooleanField(default=False)
+
 class ExcelIndividual(models.Model):
-    name = models.CharField(max_length=100)
+    user_name = models.CharField(max_length=255)
     excel_file = models.FileField(upload_to='excel_files/')
+
+    def __str__(self):
+        return self.user_name
+    
+class UserData(models.Model):
+    username = models.CharField(max_length=255)
+    excel_file = models.FileField(upload_to='uploads/')

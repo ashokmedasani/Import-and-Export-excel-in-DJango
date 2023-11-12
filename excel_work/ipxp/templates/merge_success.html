@@ -1,0 +1,44 @@
+<!-- merge_success.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merge Success</title>
+  </head>
+  <body>
+    <h2>Merging Successful!</h2>
+    <p>The merged data has been saved to {{ merged_file_path }}.</p>
+
+    <!-- Display merged data in an HTML table -->
+    <table border="1">
+      <thead>
+        <tr>
+          {% for column in merged_df.columns %}
+          <th>{{ column }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for index, row in merged_df.iterrows %}
+        <tr>
+          {% for value in row %}
+          <td>{{ value }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Button to delete the merged file -->
+    <form method="post" action="{% url 'delete_merged_file' merged_file_path %}">
+        {% comment %} C:\Users\medas\OneDrive\Documents\GitHub\Import-and-Export-excel-in-DJango\excel_work\media\merged_data.xlsx {% endcomment %}
+    
+      {% csrf_token %}
+      <button type="submit">Delete Merged File</button>
+    </form>
+
+    <!-- Link to redirect back to the upload file page -->
+    <p><a href="{% url 'upload_form' %}">Upload Another File</a></p>
+  </body>
+</html>

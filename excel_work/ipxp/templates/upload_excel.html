@@ -6,6 +6,9 @@
   </head>
   <body>
     <h2>Upload Excel Files</h2>
+    {% if success_message %}
+    <p>{{ success_message }}</p>
+    {% endif %}
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %} {{ form.as_p }}
       <button type="submit">Upload</button>
@@ -16,6 +19,10 @@
       <li>{{ item.file.name }}</li>
       <a href="{% url 'delete_excel' file_id=item.id %}">Delete</a>
       {% endfor %}
+
+      {% comment %} {% for file in files %}
+      <p>{{ file.name }}</p>
+      <{% endfor %} {% endcomment %}
     </ul>
   </body>
 </html>

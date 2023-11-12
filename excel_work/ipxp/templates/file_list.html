@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+     <html>
+     <head>
+         <title>File List</title>
+     </head>
+     <body>
+         <h2>Uploaded Files</h2>
+         <ul>
+             {% for file in files %}
+                 <li>
+                     Username: {{ file.username }} 
+                     <br>
+                     <a href="{{ file.excel_file.url }}" target="_blank">{{ file.excel_file.name }}</a>
+                     <form method="post" action="{% url 'delete_file' file.id %}">
+                         {% csrf_token %}
+                         <button type="submit">Delete</button>
+                     </form>
+                 </li>
+             {% endfor %}
+         </ul>
+
+        {% comment %} <form method="get" acton={% url 'merge_data' %}> {% endcomment %}
+            <a href="{% url 'merge_data' %}">Merge Files</a>
+        </form>
+     </body>
+     </html>
